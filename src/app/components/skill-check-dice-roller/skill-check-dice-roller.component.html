@@ -1,0 +1,99 @@
+@if (attribute != undefined || skill != undefined ) {
+<div class="card dice-roller" style="width: 20rem">
+  <div class="card-header d-flex">
+    <span>Würfeln</span
+    ><button
+      type="button"
+      class="btn-close ms-auto"
+      aria-label="Close"
+      (click)="close()"
+    ></button>
+  </div>
+
+  <div class="card-body my-3">
+    <div class="row">
+      <div class="col-6 d-flex text-center flex-column">
+        @if (attribute != undefined) {
+        <span class="fw-bold">{{ attribute.name }}</span>
+        }
+        <div class="fs-2">
+          {{ attribute?.points ?? "" }}
+        </div>
+      </div>
+
+      <div class="col-6 d-flex text-center flex-column">
+        @if (skill != undefined) {
+        <span class="fw-bold">{{ skill.name }}</span>
+        }
+        <div class="fs-2">{{ skill?.points ?? "" }}</div>
+      </div>
+    </div>
+    @if (attribute != undefined || skill != undefined) {
+    <div class="row">
+      <div class="d-grid">
+        <button
+          type="button"
+          class="btn btn-primary mx-3 my-3"
+          (click)="rollDiceForSkillcheck()"
+        >
+          Würfeln
+        </button>
+      </div>
+    </div>
+
+    <div class="row align-items-center">
+      <div class="col-12">
+        <input
+          #bonus
+          type="range"
+          class="form-range"
+          min="-3"
+          max="3"
+          step="1"
+          id="bonus"
+          value="0"
+        />
+      </div>
+      <div class="col-12 d-flex flex-row justify-content-between">
+        <div>-3</div>
+        <div>-2</div>
+        <div>-1</div>
+        <div>+0</div>
+        <div>+1</div>
+        <div>+2</div>
+        <div>+3</div>
+      </div>
+    </div>
+
+    } @if (rolledValues.length > 0) {
+    <div class="row d-flex flex-row justify-content-center mx-3">
+      @for (r of rolledValues; track $index) {
+      <div
+        class="col-auto m-2 fs-2 border rounded text"
+        [class.text-bg-primary]="r > 3"
+        [class.text-bg-warning]="r <= 3"
+      >
+        {{ r }}
+      </div>
+      }
+    </div>
+    } @if (rolledStressValues.length > 0) {
+    <div class="row mt-3 d-flex flex-row justify-content-center mx-3">
+      @for (r of rolledStressValues; track $index) {
+      <div
+        class="col-auto m-2 fs-2 border rounded text"
+        [class.text-primary]="r > 3"
+        [class.text-warning]="r <= 3 && r > 1"
+        [class.text-danger]="r == 1"
+        [class.border-primary]="r > 3"
+        [class.border-warning]="r <= 3 && r > 1"
+        [class.border-danger]="r == 1"
+      >
+        {{ r }}
+      </div>
+      }
+    </div>
+    }
+  </div>
+</div>
+}

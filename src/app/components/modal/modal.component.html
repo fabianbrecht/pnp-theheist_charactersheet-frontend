@@ -1,0 +1,32 @@
+<div
+  #modalElement
+  [class]="'modal fade modal-' + size"
+  [id]="id"
+  tabindex="-1"
+  [attr.aria-labelledby]="id + '_label'"
+  aria-hidden="true"
+  [attr.data-bs-backdrop]="static ? 'static' : null"
+  [attr.data-bs-keyboard]="!static"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header d-flex">
+        <h1 class="modal-title fs-5" [id]="id + '_label'">
+          <ng-content select="[title]"></ng-content>
+        </h1>
+
+        @if (!hideClose) {
+        <div class="ms-auto" (click)="close()">
+          <i class="bi bi-x-lg" type="button"></i>
+        </div>
+        }
+      </div>
+      <div class="modal-body">
+        <ng-content select="[body]"></ng-content>
+      </div>
+      <div class="modal-footer">
+        <ng-content select="[footer]"></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

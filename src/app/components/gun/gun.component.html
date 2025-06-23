@@ -1,0 +1,61 @@
+<div
+  class="border border-1 border-primary rounded p-3"
+  style="position: relative"
+>
+  <div class="row justify-content-center mb-2">
+    <div class="col-auto text-center">
+      <h4>
+        <i>{{ gun.name }}</i>
+      </h4>
+    </div>
+  </div>
+  <div class="row justify-content-between mb-2">
+    <div class="col-4 text-center">
+      RW:<br /><i>{{ gun.range }}</i>
+    </div>
+    <div class="col-4 text-center">
+      Schaden:<br /><i
+        class="clickabel-label"
+        (click)="labelClicked(gun.damage)"
+        >{{ gun.damage }}</i
+      >
+    </div>
+    <div class="col-4 text-center">
+      Verd.:<br /><i>{{ gun.risk }}</i>
+    </div>
+  </div>
+
+  <div class="row justify-content-between mb-2">
+    <div class="col-4 text-center">
+      Mag Typ:<br /><i>{{ gun.ammoType.name }}</i>
+    </div>
+    <div class="col-4 text-center">
+      Magazin:<br /><i>{{ gun.magCurrent }} / {{ gun.magMax }}</i>
+    </div>
+    <div class="col-4 text-center">
+      PB:<br /><i>{{ gun.ammoType.armorPiercing }}</i>
+    </div>
+  </div>
+
+  <div class="btn-icon" (click)="openModal()">
+    <i class="bi bi-three-dots-vertical" type="button"></i>
+  </div>
+
+  <app-modal #editModal
+    ><span title
+      >Edit <i>{{ gun.name }}</i></span
+    >
+    <div body>
+      <textarea class="form-control" [rows]="rows" #textarea></textarea>
+    </div>
+    <div footer style="width: 100%; display: flex">
+      <button class="btn btn-outline-danger me-auto" (click)="remove()">
+        Remove
+      </button>
+      <button class="btn btn-outline-primary" (click)="copyToClipboard()">
+        Copy
+      </button>
+      <button class="btn btn-primary ms-2" (click)="save()">Save</button>
+    </div>
+  </app-modal>
+</div>

@@ -1,0 +1,71 @@
+<div class="letter">
+  <div class="paper-grid p-5">
+    @if (isLoading) { } @else {
+    <app-info [info]="character.info"></app-info>
+
+    <div class="mt-5">
+      <app-attributes
+        [body]="character.attributes.body"
+        [social]="character.attributes.social"
+        [brain]="character.attributes.brains"
+      ></app-attributes>
+    </div>
+
+    <!-- <div class="bg-image1"></div> -->
+
+    <div class="mt-5">
+      <app-skills [skills]="character.skills"></app-skills>
+    </div>
+
+    <!-- <div class="bg-image2"></div> -->
+
+    <div class="mt-5">
+      <app-roles [roles]="character.roles"></app-roles>
+    </div>
+    }
+  </div>
+</div>
+
+<div class="letter">
+  <div class="paper-grid p-5">
+    @if (isLoading) { } @else {
+    <div class="row">
+      <h2>Notizen</h2>
+      <div class="mb-3">
+        <textarea
+          class="form-control"
+          id="notes"
+          rows="6"
+          [(ngModel)]="this.character.notes"
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="row">
+      <app-weapons [weapons]="character.weapons"></app-weapons>
+    </div>
+
+    <div class="row">
+      <div class="col-4">
+        <h2>Inventar</h2>
+        <div class="mb-3">
+          <textarea class="form-control" id="notes" rows="24"></textarea>
+        </div>
+      </div>
+      <div class="col-8">
+        <h2>Crew</h2>
+        <div class="row gy-5">
+          <div class="col-6"><app-crewmate></app-crewmate></div>
+          <div class="col-6"><app-crewmate></app-crewmate></div>
+          <div class="col-6"><app-crewmate></app-crewmate></div>
+          <div class="col-6"><app-crewmate></app-crewmate></div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>
+
+<app-dice-roller></app-dice-roller>
+
+<app-cutom-dice-roller></app-cutom-dice-roller>

@@ -1,0 +1,150 @@
+<div class="row my-2">
+  <div class="col">
+    <div class="row align-items-center">
+      <div class="col-auto">
+        <label for="charname" class="col-form-label">Name</label>
+      </div>
+      <div class="col">
+        <input
+          id="charname"
+          class="form-control text-end"
+          [(ngModel)]="info.name"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="row align-items-center">
+      <div class="col-auto">
+        <label for="age" class="col-form-label">Alter</label>
+      </div>
+      <div class="col">
+        <input id="age" class="form-control text-end" [(ngModel)]="info.age" />
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="row align-items-center">
+      <div class="col-auto">
+        <label for="pronomen" class="col-form-label">Pronomen</label>
+      </div>
+      <div class="col">
+        <input
+          id="pronomen"
+          class="form-control text-end"
+          [(ngModel)]="info.pronouns"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row my-2">
+  <div class="col">
+    <div class="row align-items-center">
+      <div class="col-auto">
+        <label for="hp-current" class="col-form-label">Lebenspunkte</label>
+      </div>
+      <div class="col d-flex flex-row">
+        <div class="input-group">
+          <input
+            type="number"
+            id="hp-current"
+            class="form-control text-end"
+            [(ngModel)]="info.hpCurrent"
+          />
+          <input
+            type="number"
+            id="hp-max"
+            class="form-control text-end"
+            [(ngModel)]="info.hpMax"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="row align-items-center">
+      <div class="col-auto">
+        <label for="favors" class="col-form-label">Gefallen</label>
+      </div>
+      <div class="col">
+        <input
+          id="favors"
+          class="form-control text-end"
+          type="number"
+          [(ngModel)]="info.favors"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="row align-items-center">
+      <div class="col-auto">
+        <label for="dollars" class="col-form-label">$</label>
+      </div>
+      <div class="col">
+        <input
+          id="dollars"
+          class="form-control text-end"
+          type="number"
+          [(ngModel)]="info.dollar"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="row align-items-center">
+      <div class="col-auto">
+        <label for="crypto" class="col-form-label">₿</label>
+      </div>
+      <div class="col">
+        <input
+          id="crypto"
+          class="form-control text-end"
+          type="number"
+          [(ngModel)]="info.crypto"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row my-2">
+  <div class="col-auto">
+    <div class="row align-items-center">
+      <app-property
+        #stress
+        name="Stress"
+        [points]="0"
+        [numOfPoints]="10"
+        (propertyChangedEvent)="stressChanged($event)"
+        (propertyClickedEvent)="stressClicked($event)"
+      ></app-property>
+    </div>
+  </div>
+  <div class="col-auto">
+    <div class="row align-items-center">
+      <app-property
+        #risk
+        name="Verdacht"
+        [points]="0"
+        [numOfPoints]="5"
+        (propertyChangedEvent)="riskChanged.emit($event)"
+        (propertyClickedEvent)="riskClicked.emit($event)"
+      ></app-property>
+    </div>
+  </div>
+  <div class="col-auto">
+    <div class="row align-items-center">
+      <app-property
+        #connections
+        name="Verbindungen"
+        [points]="0"
+        [numOfPoints]="5"
+        (propertyChangedEvent)="connectionsChanged.emit($event)"
+        (propertyClickedEvent)="connectionsClicked.emit($event)"
+      ></app-property>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="col-auto">
+  <div class="row">
+    <div class="col-auto"><h2>Waffen</h2></div>
+
+    <div class="col-auto ms-4">
+      <app-dropdown>
+        <div class="btn-icon" dropdown-button>
+          <i class="bi bi-plus-circle fs-3"></i>
+        </div>
+
+        <div dropdown-content>
+          @for (g of gunList; track $index) {
+          <span class="dropdown-item" (click)="addWeapon(g)">{{ g.name }}</span>
+          }
+          <hr class="dropdown-divider" />
+          @for (m of meleeList; track $index) {
+          <span class="dropdown-item" (click)="addWeapon(m)">{{ m.name }}</span>
+          }
+        </div>
+      </app-dropdown>
+    </div>
+
+    <button
+      class="carousel-control-prev ms-auto me-5"
+      type="button"
+      (click)="prevSlide()"
+      [class.d-none]="weapons.length < 3"
+      [disabled]="currentIndex === 0"
+      style="position: static; width: auto"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      (click)="nextSlide()"
+      [class.d-none]="weapons.length < 3"
+      [disabled]="currentIndex >= weapons.length - 3"
+      style="position: static; width: auto"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <div class="d-flex justify-content-between align-items-center my-4">
+    <div class="d-flex overflow-hidden position-relative slideshow-container">
+      <div
+        class="d-flex align-items-center"
+        [style.transform]="'translateX(-' + currentIndex * 33.3333 + '%)'"
+        style="transition: transform 0.5s ease; width: 100%"
+      >
+        @for (w of weapons; track $index) {
+        <div
+          class="col-4 px-3 py-1 flex-shrink-0"
+          [class.ps-0]="$index === currentIndex"
+          [class.pe-0]="$index === currentIndex + 2"
+        >
+          @if (w.type === "gun") {
+          <app-gun
+            [gun]="toGun(w)"
+            (weaponRemovedEvent)="removeWeapon($event)"
+          ></app-gun>
+          } @else {
+          <app-melee
+            [melee]="toMelee(w)"
+            (weaponRemovedEvent)="removeWeapon($event)"
+          ></app-melee>
+          }
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

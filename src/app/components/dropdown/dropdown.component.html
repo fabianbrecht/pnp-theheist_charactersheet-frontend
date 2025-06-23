@@ -1,0 +1,16 @@
+<div class="dropdown">
+  <div class="dropdown-button" (click)="toggleDropdown()">
+    <span [class.dropdown-button-inner]="arrow"
+      ><ng-content select="[dropdown-button]"></ng-content
+    ></span>
+  </div>
+  <div
+    class="dropdown-menu ms-2"
+    [class.show]="isOpen"
+    (animationend)="animationEnd()"
+    (click)="closeDropdown()"
+    #dropdownMenu
+  >
+    <ng-content select="[dropdown-content]"></ng-content>
+  </div>
+</div>

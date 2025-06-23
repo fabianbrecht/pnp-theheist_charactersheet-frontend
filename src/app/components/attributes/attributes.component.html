@@ -1,0 +1,38 @@
+<div class="row d-flex justify-content-center">
+  <div class="col-auto"><h2>Attribute</h2></div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-4">
+    <div class="col fw-bold">Stärke</div>
+    @for (p of body; track $index) {
+    <app-property
+      [name]="p.name"
+      [points]="p.points"
+      (propertyClickedEvent)="attributeClicked($event)"
+    ></app-property>
+    }
+  </div>
+
+  <div class="col-4">
+    <div class="col fw-bold">Sozial</div>
+    @for (p of social; track $index) {
+    <app-property
+      [name]="p.name"
+      [points]="p.points"
+      (propertyClickedEvent)="attributeClicked($event)"
+    ></app-property>
+    }
+  </div>
+
+  <div class="col-4">
+    <div class="col fw-bold">Verstand</div>
+    @for (p of brain; track $index) {
+    <app-property
+      [name]="p.name"
+      [points]="p.points"
+      (propertyClickedEvent)="attributeClicked($event)"
+    ></app-property>
+    }
+  </div>
+</div>

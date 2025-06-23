@@ -1,0 +1,19 @@
+<div class="row align-items-center justify-content-between">
+  <div class="col-auto">
+    <label class="col-form-label clickabel-label" (click)="properyClicked()">{{
+      name
+    }}</label>
+  </div>
+  <div class="col-auto d-flex flex-direction-row align-items-center">
+    @for (item of [].constructor(numOfPoints); track $index) {
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        [checked]="$index + 1 <= points"
+        (change)="checkboxChanged($event, $index)"
+      />
+    </div>
+    }
+  </div>
+</div>

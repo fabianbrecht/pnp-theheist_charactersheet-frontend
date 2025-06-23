@@ -1,0 +1,25 @@
+.bg-image1 {
+  background-image: url(../../../bg-1.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 100% 0%;
+  height: 30vw;
+  max-height: 250px;
+  width: 100%;
+  position: absolute;
+  top: 30%;
+  right: 8%;
+}
+
+.bg-image2 {
+  background-image: url(../../../bg-2.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+  height: 60vw;
+  max-height: 250px;
+  width: 100%;
+  position: absolute;
+  top: 62%;
+  left: 8%;
+}

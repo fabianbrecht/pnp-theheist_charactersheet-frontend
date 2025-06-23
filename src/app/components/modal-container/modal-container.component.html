@@ -1,0 +1,7 @@
+@for (modal of modals; track $index) {
+<app-modal>
+  <span title [innerHTML]="modal.title"></span>
+  <div body [innerHTML]="modal.body"></div>
+  <div footer [innerHTML]="modal.footer"></div>
+</app-modal>
+}
